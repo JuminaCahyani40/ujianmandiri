@@ -48,18 +48,18 @@ if (!isset($_SESSION["is_logged"])) {
                             <li><a href="?page=bobotkriteria">Bobot</a></li>
                             <li><a href="?page=penilaian">Penilaian</a></li>
                             <li class="divider"></li>
-                            <li><a href="?page=nilai">Persyaratan</a></li>
+                            <li><a href="?page=nilai">Input Nilai Camaba</a></li>
                           </ul>
                         </li>
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a href="?page=lap_seluruh">Seluruh Mahasiswa</a></li>
-                            <!-- <li><a href="?page=lap_permahasiswa">Per Mahasiswa</a></li> -->
+                            <li><a href="?page=lap_percamaba">Per Mahasiswa</a></li>
                             <li><a href="?page=lap_pendaftaran">Pendaftaran</a></li>
                           </ul>
                         </li>
-                        <!-- <li><a href="?page=pengumuman">Pengumuman</a></li> -->
+                         <li><a href="pengumuman.<?php  ?>">Pengumuman</a></li>
                         <li><a href="logout.php">Logout</a></li>
                         <li><a href="#">|</a></li>
                         <li><a href="#" style="font-weight: bold; color: red;"><?= ucfirst($_SESSION["username"]) ?></a></li>
