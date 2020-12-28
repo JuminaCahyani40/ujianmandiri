@@ -54,12 +54,12 @@ if (!isset($_SESSION["is_logged"])) {
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laporan <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="?page=lap_seluruh">Seluruh Mahasiswa</a></li>
-                            <li><a href="?page=lap_percamaba">Per Mahasiswa</a></li>
+                            <li><a href="?page=lap_seluruh">Seluruh Calon Mahasiswa Baru</a></li>
+                            <li><a href="?page=lap_percamaba">Per Calon Mahasiswa Baru</a></li>
                             <li><a href="?page=lap_pendaftaran">Pendaftaran</a></li>
                           </ul>
                         </li>
-                         <li><a href="pengumuman.<?php  ?>">Pengumuman</a></li>
+                         <li><a href="pengumuman.php">Pengumuman</a></li>
                         <li><a href="logout.php">Logout</a></li>
                         <li><a href="#">|</a></li>
                         <li><a href="#" style="font-weight: bold; color: red;"><?= ucfirst($_SESSION["username"]) ?></a></li>

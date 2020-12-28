@@ -16,7 +16,6 @@
 		$sql = "SELECT
 			(SELECT nama FROM camaba WHERE no_pendaftaran=mhs.no_pendaftaran) AS nama,
 			(SELECT no_pendaftaran FROM camaba WHERE no_pendaftaran=mhs.no_pendaftaran) AS no_pendaftaran,
-			(SELECT tahun_lulus FROM camaba WHERE no_pendaftaran=mhs.no_pendaftaran) AS tahun,
 			$sqlKriteria
 			SUM(
 				IF(
@@ -48,12 +47,12 @@
 		GROUP BY nilai.no_pendaftaran
 		ORDER BY rangking DESC"; ?>
 	  <div class="panel panel-info">
-	      <div class="panel-heading"><h3 class="text-center"><h2 class="text-center"><?php $query = $connection->query("SELECT * FROM prodi WHERE kd_prodi=$_GET[beasiswa]"); echo $query->fetch_assoc()["nama_prodi"]; ?></h2></h3></div>
+	      <div class="panel-heading"><h3 class="text-center"><h2 class="text-center"><?php $query = $connection->query("SELECT * FROM prodi WHERE kd_prodi=$_GET[prodi]"); echo $query->fetch_assoc()["nama_prodi"]; ?></h2></h3></div>
 	      <div class="panel-body">
 	          <table class="table table-condensed table-hover">
 	              <thead>
 	                  <tr>
-							<th>NIM</th>
+							<th>No. Pendaftaran</th>
 							<th>Nama</th>
 							<?php //$query = $connection->query("SELECT nama FROM kriteria WHERE kd_prodi=$_GET[prodi]"); while($row = $query->fetch_assoc()): ?>
 								<!-- <th><?//=$row["nama"]?></th> -->
@@ -65,9 +64,9 @@
 					<?php $query = $connection->query($sql); while($row = $query->fetch_assoc()): ?>
 					<?php
 					$rangking = number_format((float) $row["rangking"], 8, '.', '');
-					$q = $connection->query("SELECT no_pendaftaran FROM hasil WHERE no_pendaftaran='$row[no_pendaftaran]' AND kd_prodi='$_GET[prodi]' AND tahun_lulus='$row[tahun_lulus]'");
+					$q = $connection->query("SELECT no_pendaftaran FROM hasil WHERE no_pendaftaran='$row[no_pendaftaran]' AND kd_prodi='$_GET[prodi]'");
 					if (!$q->num_rows) {
-					$connection->query("INSERT INTO hasil VALUES(NULL, '$_GET[prodi]', '$row[no_pendaftaran]', '".$rangking."', '$row[tahun_lulus]')");
+					$connection->query("INSERT INTO hasil VALUES(NULL, '$_GET[prodi]', '$row[no_pendaftaran]', '".$rangking."')");
 					}
 					?>
 					<tr>

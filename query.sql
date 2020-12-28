@@ -2,7 +2,7 @@
 SELECT
 	nilai.kd_kriteria,
     kriteria.sifat,
-    (SELECT bobot FROM bobot_kriteria WHERE kd_kriteria=kriteria.kd_kriteria AND kd_prodi=prodi.kd_prodi) AS bobot,
+    (SELECT bobot FROM bobot_kriteria WHERE kd_kriteria=kriteria.kd_kriteria AND kd_prodi=prodi.kd_prodi) AS bobot_kriteria,
 	ROUND(IF(kriteria.sifat='max', MAX(nilai.nilai), MIN(nilai.nilai)), 1) AS normalization
 FROM nilai
 JOIN kriteria USING(kd_kriteria)

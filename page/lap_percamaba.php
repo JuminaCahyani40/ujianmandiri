@@ -13,12 +13,12 @@
 								</select>
 								<button type="submit" class="btn btn-primary">Tampilkan</button>
 							</form>
-	            <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+	            				<?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
 								<?php
-								$q = $connection->query("SELECT b.kd_prodi, b.nama_prodi, h.nilai, (SELECT MAX(nilai) FROM hasil WHERE no_pendaftaran=h.no_pendaftaran) AS nilai_max FROM camaba m JOIN hasil h ON m.no_pendaftaran=h.no_pendaftaran JOIN prodi b ON b.kd_prodi=h.kd_prodi WHERE m.no_pendaftaran=$_POST[camaba]");
+								$q = $connection->query("SELECT b.kd_prodi, b.nama, h.nilai, (SELECT MAX(nilai) FROM hasil WHERE no_pendaftaran=h.no_pendaftaran) AS nilai_max FROM camaba m JOIN hasil h ON m.no_pendaftaran=h.no_pendaftaran JOIN prodi b ON b.kd_prodi=h.kd_prodi WHERE m.no_pendaftaran=$_POST[camaba]");
 								$prodi = []; $data = [];
 								while ($r = $q->fetch_assoc()) {
-									$prodi[$r["kd_prodi"]] = $r["nama_prodi"];
+									$prodi[$r["kd_prodi"]] = $r["nama"];
 									$data[$r["kd_prodi"]][] = $r["nilai"];
 									$max = $r["nilai_max"];
 								}
@@ -26,7 +26,7 @@
 								<hr>
 								<table class="table table-condensed">
 									<tbody>
-										<?php $query = $connection->query("SELECT DISTINCT(p.kd_prodi), k.nama_prodi, n.nilai FROM nilai n JOIN penilaian p USING(kd_kriteria) JOIN kriteria k USING(kd_kriteria) WHERE n.no_pendaftaran=$_POST[camaba] AND n.kd_prodi=1"); while ($r = $query->fetch_assoc()): ?>
+										<?php $query = $connection->query("SELECT DISTINCT(p.kd_prodi), k.nama, n.nilai FROM nilai n JOIN penilaian p USING(kd_kriteria) JOIN kriteria k USING(kd_kriteria) WHERE n.no_pendaftaran=$_POST[camaba] AND n.kd_prodi=1"); while ($r = $query->fetch_assoc()): ?>
 											<tr>
 												<th><?=$r["nama"]?></th>
 												<td>: <?=number_format($r["nilai"], 8)?></td>
@@ -39,7 +39,7 @@
 		                <thead>
 		                    <tr>
 													<?php foreach ($prodi as $key => $val): ?>
-			                        <th><?=$val?></th>
+			                       					 <th><?=$val?></th>
 													<?php endforeach; ?>
 													<th>Nilai Maksimal</th>
 		                    </tr>

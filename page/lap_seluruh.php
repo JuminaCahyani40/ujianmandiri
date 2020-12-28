@@ -13,30 +13,30 @@
 				</form> 
 	            <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
 				<?php
-				$q = $connection->query("SELECT b.kd_prodi, b.nama, h.nilai, m.nama AS mahasiswa, m.no_pendaftaran, (SELECT MAX(nilai) FROM hasil WHERE no_pendaftaran=h.no_pendaftaran) AS nilai_max FROM camaba m JOIN hasil h ON m.no_pendaftaran=h.no_pendaftaran JOIN prodi b ON b.kd_prodi=h.kd_prodi WHERE m.tahun_lulus='$_POST[tahun]'");
+				$q = $connection->query("SELECT b.kd_prodi, b.nama_prodi, h.nilai, m.nama AS camaba, m.no_pendaftaran, (SELECT MAX(nilai) FROM hasil WHERE no_pendaftaran=h.no_pendaftaran) AS nilai_max FROM camaba m JOIN hasil h ON m.no_pendaftaran=h.no_pendaftaran JOIN prodi b ON b.kd_prodi=h.kd_prodi WHERE m.tahun_lulus='$_POST[tahun]'");
 				$prodi = []; $data = []; $d = [];
 				while ($r = $q->fetch_assoc()) {
-					$prodi[$r["kd_prodi"]] = $r["nama"];
-					$s = $connection->query("SELECT b.nama, a.nilai FROM hasil a JOIN beasiswa b USING(kd_beasiswa) WHERE a.nim=$r[nim] AND a.tahun=$_POST[tahun]");
+					$prodi[$r["kd_prodi"]] = $r["nama_prodi"];
+					$s = $connection->query("SELECT b.nama, a.nilai FROM hasil a JOIN prodi b USING(kd_prodi) WHERE a.no_pendaftaran=$r[no_pendaftaran] AND a.tahun_lulus=$_POST[tahun]");
 					while ($rr = $s->fetch_assoc()){
 						$d[$rr['nama']] = $rr['nilai'];
 					}
 					$m = max($d);
 					$k = array_search($m, $d);
-					$data[$r["nim"]."-".$r["mahasiswa"]."-".$r["nilai_max"]."-".$k][$r["kd_beasiswa"]] = $r["nilai"];
+					$data[$r["no_pendaftaran"]."-".$r["camaba"]."-".$r["nilai_max"]."-".$k][$r["kd_prodi"]] = $r["nilai"];
 				}
 				?>
 				<hr>
 				<table class="table table-condensed">
 	                <thead>
 	                    <tr>
-							<th>NIM</th>
+							<th>No. Pendaftaran</th>
 							<th>Nama</th>
-							<?php foreach ($beasiswa as $val): ?>
+							<?php foreach ($prodi as $val): ?>
 		                        <th><?=$val?></th>
 							<?php endforeach; ?>
 							<th>Nilai Maksimal</th>
-							<th>Rekomendasi</th>
+							<th>Lolos ke Prodi</th>
 	                    </tr>
 	                </thead>
 					<tbody>
