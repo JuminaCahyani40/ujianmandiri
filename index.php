@@ -18,6 +18,17 @@ if (!isset($_SESSION["is_logged"])) {
         body {
             margin-top: 40px;
         }
+        img{
+          width: 50px;
+          margin-left: -170px;
+          float: left;
+        }
+        .img2{
+          width: 100px;
+          height: 50px;
+          float: right;
+          margin-right: -870px;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +39,7 @@ if (!isset($_SESSION["is_logged"])) {
                     <a class="navbar-brand" href="#"><?php $str = (isset($_GET["page"])) ? (($_GET["page"] == "nilai") ? "persyaratan" : $_GET["page"]) : "home"; echo strtoupper($str)?></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <img class="img" src="Lambang.png" alt="">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="?page=home">Beranda <span class="sr-only">(current)</span></a></li>
                         <li class="dropdown">
@@ -64,9 +76,11 @@ if (!isset($_SESSION["is_logged"])) {
                         <li><a href="#">|</a></li>
                         <li><a href="#" style="font-weight: bold; color: red;"><?= ucfirst($_SESSION["username"]) ?></a></li>
                     </ul>
+                    <img class="img2" src="mandiri.png" alt="">
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
+        		</div>
         <div class="row">
             <div class="col-md-12">
               <?php include page($_PAGE); ?>

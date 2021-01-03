@@ -29,6 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <style>
         body {
             margin-top: 40px;
+            background:url(ai.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: sans-serif;
+            height: 550px;
+        }
+        .img-thumbnail {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: -50px;
+            left: calc(50% - 50px)
         }
     </style>
 </head>
@@ -38,7 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="panel panel-info">
-                    <div class="panel-heading"><h3 class="text-center">LOGIN PETUGAS</h3></div>
+                    <div class="panel-heading">
+                    <<img class="img-thumbnail" src="Lambang.png" alt="">
+                    <h3 class="text-center">LOGIN PETUGAS</h3></div>
                     <div class="panel-body">
                         <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
                             <div class="form-group">
