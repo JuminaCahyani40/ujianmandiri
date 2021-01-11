@@ -19,15 +19,14 @@ if (!isset($_SESSION["is_logged"])) {
             margin-top: 40px;
         }
         img{
-          width: 50px;
-          margin-left: -170px;
+          width: 100px;
+          margin-left: -220px;
           float: left;
         }
         .img2{
-          width: 100px;
-          height: 50px;
+          width: 50px;
           float: right;
-          margin-right: -870px;
+          margin-right: -800px;
         }
     </style>
 </head>
@@ -39,7 +38,7 @@ if (!isset($_SESSION["is_logged"])) {
                     <a class="navbar-brand" href="#"><?php $str = (isset($_GET["page"])) ? (($_GET["page"] == "nilai") ? "persyaratan" : $_GET["page"]) : "home"; echo strtoupper($str)?></a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <img class="img" src="Lambang.png" alt="">
+                <!--<img class="img" src="mandiri.png" alt="">-->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="?page=home">Beranda <span class="sr-only">(current)</span></a></li>
                         <li class="dropdown">
@@ -76,7 +75,7 @@ if (!isset($_SESSION["is_logged"])) {
                         <li><a href="#">|</a></li>
                         <li><a href="#" style="font-weight: bold; color: red;"><?= ucfirst($_SESSION["username"]) ?></a></li>
                     </ul>
-                    <img class="img2" src="mandiri.png" alt="">
+                    <img class="img2" src="Lambang.png" alt="">
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>

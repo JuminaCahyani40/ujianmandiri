@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <style>
         body {
-            margin-top: 40px;
+            margin-top: 120px;
             background:url(ai.jpg);
             background-size: cover;
             background-position: center;
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             height: 100px;
             border-radius: 50%;
             position: absolute;
-            top: -50px;
+            top: -70px;
             left: calc(50% - 50px)
         }
     </style>
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                    <<img class="img-thumbnail" src="Lambang.png" alt="">
+                    <img class="img-thumbnail" src="Lambang.png" alt="">
                     <h3 class="text-center">LOGIN PETUGAS</h3></div>
                     <div class="panel-body">
                         <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
